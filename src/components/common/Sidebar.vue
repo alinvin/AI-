@@ -6,7 +6,7 @@
                 <template v-if="item.subs">
                     <el-submenu :index="item.index" :key="item.index">
                         <template slot="title">
-                            <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
+                            <i :class="[item.icon,fonts]"></i><span slot="title">{{ item.title }}</span>
                         </template>
                         <el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">
                             {{ subItem.title }}
@@ -15,7 +15,7 @@
                 </template>
                 <template v-else>
                     <el-menu-item :index="item.index" :key="item.index">
-                        <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
+                        <i :class="[item.icon,fonts]"></i><span slot="title">{{ item.title }}</span>
                     </el-menu-item>
                 </template>
             </template>
@@ -29,14 +29,15 @@ export default {
   data() {
     return {
       collapse: false,
+      fonts: "icon iconfont",
       items: [
         {
-          icon: "el-icon-setting",
+          icon: "icon-shouye",
           index: "dashboard",
           title: "系统首页"
         },
         {
-          icon: "el-icon-tickets",
+          icon: "icon-yuyin",
           index: "table",
           title: "Ai智能语音",
           subs: [
@@ -83,7 +84,7 @@ export default {
           ]
         },
         {
-          icon: "el-icon-tickets",
+          icon: "icon-kehuguanli",
           index: "customer-manage",
           title: "客户管理",
           subs: [
@@ -106,7 +107,7 @@ export default {
           ]
         },
         {
-          icon: "el-icon-tickets",
+          icon: "icon-huawu",
           index: "customer-management",
           title: "话务管理",
           subs: [
@@ -121,7 +122,7 @@ export default {
           ]
         },
         {
-          icon: "el-icon-tickets",
+          icon: "icon-xiangmuguanli",
           index: "project-management",
           title: "项目管理",
           subs: [
@@ -136,7 +137,7 @@ export default {
           ]
         },
         {
-          icon: "el-icon-tickets",
+          icon: "icon-zuzhijigouguanli",
           index: "organizational-structure",
           title: "组织机构",
           subs: [
@@ -163,7 +164,7 @@ export default {
           ]
         },
         {
-          icon: "el-icon-tickets",
+          icon: "icon-icon04",
           index: "mass-platform",
           title: "群发平台",
           subs: [
@@ -178,7 +179,7 @@ export default {
           ]
         },
         {
-          icon: "el-icon-tickets",
+          icon: "icon-shezhizhongxin",
           index: "set-center",
           title: "设置中心",
           subs: [
@@ -197,7 +198,7 @@ export default {
           ]
         },
         {
-          icon: "el-icon-tickets",
+          icon: "icon-chanpinguanli",
           index: "product-management",
           title: "产品管理",
           subs: [
@@ -220,6 +221,25 @@ export default {
             {
               index: "product-recycle-bin",
               title: "产品回收站"
+            }
+          ]
+        },
+        {
+          icon: "icon-dingdanguanli",
+          index: "order-management",
+          title: "订单管理",
+          subs: [
+            {
+              index: "order-list",
+              title: "订单列表"
+            },
+            {
+              index: "express-company",
+              title: "快递公司"
+            },
+            {
+              index: "order-report",
+              title: "订单报表"
             }
           ]
         }
@@ -294,6 +314,11 @@ export default {
 </script>
 
 <style scoped>
+@import "//at.alicdn.com/t/font_653281_s728qkec3ee1att9.css";
+.icon {
+  font-size: 20px;
+  margin-right: 8px;
+}
 .sidebar {
   display: block;
   position: absolute;
@@ -302,7 +327,7 @@ export default {
   bottom: 0;
 }
 .sidebar-el-menu:not(.el-menu--collapse) {
-  width: 250px;
+  width: 200px;
 }
 .sidebar > ul {
   height: 100%;

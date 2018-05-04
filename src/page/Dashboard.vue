@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="data_section"> 
+    <section class="data_section"> 
 			<el-row :gutter="10" class="row_list">
 					<p>今日已服务客户：<span class="bule_text">0</span>位；服务客户总量：<span class="bule_text">492</span>位</p>
 			</el-row>
@@ -145,5 +145,9 @@ export default {
 .todo-item-del {
   text-decoration: line-through;
   color: #999;
+}
+.data_section {
+  padding: 10px 20px 0 20px;
+  box-sizing: border-box;
 }
 </style>

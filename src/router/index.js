@@ -252,13 +252,35 @@ export default new Router({
                     meta: {
                         title: '产品回收站'
                     }
+                },
+                //订单管理
+                {
+                    path: '/order-list',
+                    component: resolve => require(['../page/order-management/order-list.vue'], resolve),
+                    meta: {
+                        title: '订单列表'
+                    }
+                },
+                {
+                    path: '/express-company',
+                    component: resolve => require(['../page/order-management/express-company.vue'], resolve),
+                    meta: {
+                        title: '快递公司'
+                    }
+                },
+                {
+                    path: '/order-report',
+                    component: resolve => require(['../page/order-management/order-report.vue'], resolve),
+                    meta: {
+                        title: '订单报表'
+                    }
                 }
 
             ]
         },
         {
             path: '/login',
-            component: resolve => require(['../page/Login.vue'], resolve)
+            component: resolve => require(['../page/login.vue'], resolve)
         },
         {
             path: '/404',
