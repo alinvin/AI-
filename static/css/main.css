@@ -34,7 +34,6 @@ a {
 
 .content {
     width: auto;
-    padding: 40px;
 }
 
 .content-collapse {
@@ -166,4 +165,31 @@ a {
 
 .v-note-wrapper .v-note-panel {
     min-height: 500px;
+}
+
+.bule_text {
+    color: rgb(30, 159, 255)
+}
+
+.blue {
+    background: rgb(30, 159, 255)
+}
+
+.h_title {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    background: #e4e1e1;
+    font-size: 12px;
+}
+
+.h_title div {
+    width: 5px;
+    height: 100%;
+    margin-right: 5px;
+    background: rgb(64, 158, 255);
+}
+
+.fs12 {
+    font-size: 12px;
 }
