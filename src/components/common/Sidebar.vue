@@ -37,265 +37,56 @@ export default {
           title: "系统首页"
         },
         {
-          icon: "icon-yuyin",
+          icon: "icon-liucheng",
           index: "table",
-          title: "Ai智能语音",
+          title: "流程话术",
           subs: [
             {
-              index: "call-setings",
-              title: "Ai呼叫设置"
+              index: "process-edit",
+              title: "流程编辑"
             },
             {
-              index: "data-import",
-              title: "Ai资料导入"
+              index: "label-management",
+              title: "标签管理"
             },
             {
-              index: "data-recovery",
-              title: "Ai资料回收"
+              index: "universal-corpus",
+              title: "通用语料"
             },
             {
-              index: "call-log",
-              title: "Ai呼叫记录"
+              index: "upload-record",
+              title: "上传录音"
             },
             {
-              index: "call-status",
-              title: "Ai呼叫状态"
+              index: "application-records",
+              title: "申请记录"
             },
             {
               index: "knowledge-management",
               title: "Ai知识库管理"
-            },
-            {
-              index: "unanswer-record",
-              title: "Ai无答案记录"
-            },
-            {
-              index: "voice-replace",
-              title: "Ai语音替换"
-            },
-            {
-              index: "type-config",
-              title: "Ai类型配置"
-            },
-            {
-              index: "voice-flew-chart",
-              title: "Ai语音流程图"
             }
           ]
         },
         {
-          icon: "icon-kehuguanli",
-          index: "customer-manage",
-          title: "客户管理",
-          subs: [
-            {
-              index: "customer-search",
-              title: "客户检索"
-            },
-            {
-              index: "public-data",
-              title: "公有资料"
-            },
-            {
-              index: "recycle-bin",
-              title: "回收站"
-            },
-            {
-              index: "service-record",
-              title: "服务记录"
-            }
-          ]
+          icon: "icon-dianhuajilu",
+          index: "call-log",
+          title: "拨打日志"
         },
         {
-          icon: "icon-huawu",
-          index: "customer-management",
-          title: "话务管理",
-          subs: [
-            {
-              index: "seating-status",
-              title: "坐席状态"
-            },
-            {
-              index: "queue-status",
-              title: "队列状态"
-            }
-          ]
+          icon: "icon-_ziyuanguanli",
+          index: "resource-management",
+          title: "资源管理"
         },
         {
-          icon: "icon-xiangmuguanli",
-          index: "project-management",
-          title: "项目管理",
-          subs: [
-            {
-              index: "project-category",
-              title: "项目分类"
-            },
-            {
-              index: "project-list",
-              title: "项目列表"
-            }
-          ]
-        },
-        {
-          icon: "icon-zuzhijigouguanli",
-          index: "organizational-structure",
-          title: "组织机构",
-          subs: [
-            {
-              index: "department-management",
-              title: "部门管理"
-            },
-            {
-              index: "role-permissions",
-              title: "角色权限"
-            },
-            {
-              index: "user-management",
-              title: "用户管理"
-            },
-            {
-              index: "routing-settings",
-              title: "路由设置"
-            },
-            {
-              index: "extension-management",
-              title: "分机管理"
-            }
-          ]
-        },
-        {
-          icon: "icon-icon04",
-          index: "mass-platform",
-          title: "群发平台",
-          subs: [
-            {
-              index: "mobile-sms",
-              title: "手机短信"
-            },
-            {
-              index: "sms-templates",
-              title: "短信模板"
-            }
-          ]
+          icon: "icon-manage_staff",
+          index: "employee-management",
+          title: "员工管理"
         },
         {
           icon: "icon-shezhizhongxin",
-          index: "set-center",
-          title: "设置中心",
-          subs: [
-            {
-              index: "system-set",
-              title: "系统设置"
-            },
-            {
-              index: "bulletin-release",
-              title: "公告发布"
-            },
-            {
-              index: "blacklist",
-              title: "黑名单"
-            }
-          ]
-        },
-        {
-          icon: "icon-chanpinguanli",
-          index: "product-management",
-          title: "产品管理",
-          subs: [
-            {
-              index: "product-category",
-              title: "产品分类"
-            },
-            {
-              index: "product-list",
-              title: "产品列表"
-            },
-            {
-              index: "warehousing-records",
-              title: "入库记录"
-            },
-            {
-              index: "out-library-records",
-              title: "出库记录"
-            },
-            {
-              index: "product-recycle-bin",
-              title: "产品回收站"
-            }
-          ]
-        },
-        {
-          icon: "icon-dingdanguanli",
-          index: "order-management",
-          title: "订单管理",
-          subs: [
-            {
-              index: "order-list",
-              title: "订单列表"
-            },
-            {
-              index: "express-company",
-              title: "快递公司"
-            },
-            {
-              index: "order-report",
-              title: "订单报表"
-            }
-          ]
+          index: "set",
+          title: "设置"
         }
-        // {
-        //     icon: 'el-icon-tickets',
-        //     index: 'table',
-        //     title: '基础表格'
-        // },
-        // {
-        //     icon: 'el-icon-message',
-        //     index: 'tabs',
-        //     title: 'tab选项卡'
-        // },
-        // {
-        //     icon: 'el-icon-date',
-        //     index: '3',
-        //     title: '表单相关',
-        //     subs: [
-        //         {
-        //             index: 'form',
-        //             title: '基本表单'
-        //         },
-        //         {
-        //             index: 'editor',
-        //             title: '富文本编辑器'
-        //         },
-        //         {
-        //             index: 'markdown',
-        //             title: 'markdown编辑器'
-        //         },
-        //         {
-        //             index: 'upload',
-        //             title: '文件上传'
-        //         }
-        //     ]
-        // },
-        // {
-        //     icon: 'el-icon-star-on',
-        //     index: 'charts',
-        //     title: 'schart图表'
-        // },
-        // {
-        //     icon: 'el-icon-rank',
-        //     index: 'drag',
-        //     title: '拖拽列表'
-        // },
-        // {
-        //     icon: 'el-icon-warning',
-        //     index: 'permission',
-        //     title: '权限测试'
-        // },
-        // {
-        //     icon: 'el-icon-error',
-        //     index: '404',
-        //     title: '404页面'
-        // }
       ]
     };
   },
@@ -314,7 +105,7 @@ export default {
 </script>
 
 <style scoped>
-@import "//at.alicdn.com/t/font_653281_s728qkec3ee1att9.css";
+@import "//at.alicdn.com/t/font_653281_qfn6wbxrnsysnhfr.css";
 .icon {
   font-size: 20px;
   margin-right: 8px;

@@ -10,6 +10,7 @@
     "build:dll": "webpack --config build/webpack.dll.conf.js"
   },
   "dependencies": {
+    "@zct1989/vue-component": "^0.0.3",
     "axios": "^0.15.3",
     "babel-polyfill": "^6.23.0",
     "echarts": "^4.1.0",

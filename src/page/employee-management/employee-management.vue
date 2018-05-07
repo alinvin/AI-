@@ -1,9 +1,7 @@
+//员工管理
 <template>
-  <div class="knowledgeManagement">
-
-  </div>
+  <div></div>
 </template>
 <script>
 export default {};
 </script>
-

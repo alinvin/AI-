@@ -1,4 +1,4 @@
-//手机短信
+//资源管理
 <template>
   <div></div>
 </template>
