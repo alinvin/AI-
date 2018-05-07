@@ -60,10 +60,6 @@ export default {
             {
               index: "application-records",
               title: "申请记录"
-            },
-            {
-              index: "knowledge-management",
-              title: "Ai知识库管理"
             }
           ]
         },
