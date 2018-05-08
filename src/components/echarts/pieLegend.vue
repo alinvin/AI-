@@ -1,57 +1,96 @@
 <template>
-    <div :id="id" style="width:100%;height:400px;"></div>
+    <div class="list_content">
+        <div v-for="item in lists" >
+          <p class="number_text">{{item.number}}</p>
+          <p class="name_text">{{item.name}}</p>
+        </div>
+    </div>
 </template>
 
 <script>
-import echarts from "echarts";
 export default {
-  props: ["id", "type"],
-  myChart: null,
-  mounted() {
-    this.myChart = echarts.init(document.getElementById(this.id));
-    this.myChart.setOption(this.readyBin1Option());
-  },
-  methods: {
-    readyBin1Option() {
-      let data = {
-        tooltip: {
-          trigger: "item",
-          formatter: "{a} <br/>{b} : {c} ({d}%)"
+  data() {
+    return {
+      lists: [
+        {
+          number: "123次",
+          name: "呼叫总数"
         },
-        legend: {
-          orient: "vertical",
-          left: "left",
-          data: ["直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎"]
+        {
+          number: "512次",
+          name: "接通数"
         },
-        series: [
-          {
-            name: "访问来源",
-            type: "pie",
-            radius: "50%",
-            center: ["50%", "50%"],
-            data: [
-              { value: 335, name: "直接访问" },
-              { value: 310, name: "邮件营销" },
-              { value: 234, name: "联盟广告" },
-              { value: 135, name: "视频广告" },
-              { value: 1548, name: "搜索引擎" }
-            ],
-            itemStyle: {
-              emphasis: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: "rgba(0, 0, 0, 0.5)"
-              }
-            }
-          }
-        ]
-      };
-      return data;
-    }
+        {
+          number: "42%",
+          name: "接通率"
+        },
+        {
+          number: "123次",
+          name: "呼叫总数"
+        },
+        {
+          number: "23h12s",
+          name: "通话总时长"
+        },
+        {
+          number: "123次",
+          name: "呼叫总数"
+        }
+      ]
+    };
   }
 };
 </script>
 
 <style lang="less">
-
+.list_content {
+  height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  div {
+    flex: 33%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .name_text {
+      font-size: 12px;
+    }
+    .number_text {
+      font-size: 20px;
+    }
+  }
+  :nth-child(1) {
+    .number_text {
+      color: rgb(113, 176, 253);
+    }
+  }
+  :nth-child(2) {
+    .number_text {
+      color: rgb(241, 209, 63);
+    }
+  }
+  :nth-child(3) {
+    .number_text {
+      color: rgb(173, 241, 63);
+    }
+  }
+  :nth-child(4) {
+    .number_text {
+      color: rgb(17, 88, 221);
+    }
+  }
+  :nth-child(5) {
+    .number_text {
+      color: rgb(179, 77, 10);
+    }
+  }
+  :nth-child(6) {
+    .number_text {
+      color: rgb(54, 53, 52);
+    }
+  }
+}
 </style>

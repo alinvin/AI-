@@ -1,5 +1,6 @@
 <template>
-    <div :id="id" style="width:100%;height:400px;"></div>
+    <div :id="id" style="width:100%;height:200px;">
+    </div>
 </template>
 
 <script>
@@ -32,15 +33,26 @@ export default {
         },
         legend: {
           orient: "vertical",
-          x: "left",
-          data: ["直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎"]
+          x: "right",
+          top: "10%",
+          // formatter: function(name) {
+          //   return "Legend " + name;
+          // },
+          data: [
+            "A类用户",
+            "B类用户",
+            "C类用户",
+            "D类用户",
+            "E类用户",
+            "F类用户"
+          ]
         },
         series: [
           {
             name: "访问来源",
             type: "pie",
-            radius: ["30%", "50%"],
-            center: ["50%", "50%"],
+            radius: ["65%", "80%"],
+            center: ["20%", "50%"],
             avoidLabelOverlap: false,
             label: {
               normal: {
@@ -61,16 +73,18 @@ export default {
               }
             },
             data: [
-              { value: 335, name: "直接访问" },
-              { value: 310, name: "邮件营销" },
-              { value: 234, name: "联盟广告" },
-              { value: 135, name: "视频广告" },
-              { value: 1548, name: "搜索引擎" }
+              { value: 335, name: "A类用户" },
+              { value: 310, name: "B类用户" },
+              { value: 234, name: "C类用户" },
+              { value: 135, name: "D类用户" },
+              { value: 1548, name: "E类用户" },
+              { value: 200, name: "F类用户" }
             ]
           }
         ]
       };
       return data;
+      console.log(this.color);
     }
   }
 };

@@ -5,22 +5,33 @@
 					<p>今日已服务客户：<span class="bule_text">0</span>位；服务客户总量：<span class="bule_text">492</span>位</p>
 			</el-row>
 			<el-row :gutter="10" class="row_list">
-				<el-col :span="8">
-				    <pieLegend  id="bin1_data"></pieLegend>
+				<el-col :span="15">
+          <el-card>
+             <div slot="header" class="clearfix">
+                <span>客户通话质量统计</span>
+              </div>
+				    <pie-echarts id="pie_data1"></pie-echarts>
+          </el-card>
 				</el-col>
-				<el-col :span="8">
-				    <pie-echarts id="pie_data"></pie-echarts>
-				</el-col>
-        <el-col :span="8">
-          <radar-echarts id="radar_data"></radar-echarts>
+        <el-col :span="9">
+          <el-card>
+            <div slot="header" class="clearfix">
+                <span>通话分析</span>
+              </div>
+				        <pie-legend id="pie_data2"></pie-legend>
+          </el-card>
 				</el-col>
 			</el-row>
-			<el-row :gutter="10" class="row_list">
-				<el-col :span="8">
-				</el-col>
-			   	<el-col :span="8">
-				</el-col>
-			</el-row>
+      <el-row>
+        <el-col :span="24">
+          <el-card>
+            <div slot="header" class="clearfix">
+                <span>拨打统计</span>
+              </div>
+				        <radar-echarts id="pie_data3"></radar-echarts>
+          </el-card>
+        </el-col>
+      </el-row>
 		</section>
     </div>
 </template>

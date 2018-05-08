@@ -1,5 +1,5 @@
 <template>
-    <div :id="id" style="width:100%;height:400px;"></div>
+    <div :id="id" style="width:100%;height:260px;margin-bottom:15px;"></div>
 </template>
 
 <script>
@@ -26,41 +26,36 @@ export default {
   methods: {
     readyBarOption() {
       let data = {
-        title: {
-          text: "接听状态"
-        },
-        tooltip: {},
-
-        radar: {
-          shape: "circle",
-          radius: "50%",
-          name: {
-            textStyle: {
-              color: "#fff",
-              backgroundColor: "#999",
-              borderRadius: 3,
-              padding: [1, 3]
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            type: "cross",
+            lineStyle: {
+              color: "rgb(194,217,126)",
+              width: 2
             }
-          },
-          indicator: [
-            { name: "已接通", max: 6500 },
-            { name: "超时", max: 16000 },
-            { name: "忙线中", max: 30000 },
-            { name: "拥塞", max: 38000 },
-            { name: "其他", max: 52000 }
-          ]
+          }
+          // formatter: "{b0}: {c0}<br />{b1}: {c0}"
+        },
+        xAxis: {
+          type: "category",
+          name: "日期",
+          data: ["4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18"]
+        },
+        yAxis: {
+          type: "value",
+          name: "时长/秒(s)"
         },
         series: [
           {
-            name: "呼出",
-            type: "radar",
-            // areaStyle: {normal: {}},
-            data: [
-              {
-                value: [4300, 10000, 28000, 35000, 50000, 19000],
-                name: "呼出"
-              }
-            ]
+            name: "通话时长",
+            data: [12, 23, 33, 43, 45, 12, 8],
+            type: "line",
+            smooth: true,
+            lineStyle: {
+              color: "rgb(160, 195, 57)",
+              width: 3
+            }
           }
         ]
       };
