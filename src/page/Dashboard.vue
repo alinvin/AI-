@@ -48,6 +48,25 @@ export default {
     pieLegend,
     pieEcharts,
     radarEcharts
+  },
+  created() {
+    this.post();
+  },
+  methods: {
+    post() {
+      $axios
+        .get("/user", {
+          params: {
+            ID: 12345
+          }
+        })
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(response) {
+          console.log(response);
+        });
+    }
   }
 };
 </script>

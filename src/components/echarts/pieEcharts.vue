@@ -35,21 +35,38 @@ export default {
           orient: "vertical",
           x: "right",
           top: "10%",
-          // formatter: function(name) {
-          //   return "Legend " + name;
-          // },
+          borderRadius: 50,
+          formatter: "{name}",
           data: [
-            "A类用户",
-            "B类用户",
-            "C类用户",
-            "D类用户",
-            "E类用户",
-            "F类用户"
+            {
+              name: "A类用户",
+              icon: "circle"
+            },
+            {
+              name: "B类用户",
+              icon: "circle"
+            },
+            {
+              name: "C类用户",
+              icon: "circle"
+            },
+            {
+              name: "D类用户",
+              icon: "circle"
+            },
+            {
+              name: "E类用户",
+              icon: "circle"
+            },
+            {
+              name: "F类用户",
+              icon: "circle"
+            }
           ]
         },
         series: [
           {
-            name: "访问来源",
+            name: "通话质量",
             type: "pie",
             radius: ["65%", "80%"],
             center: ["20%", "50%"],
