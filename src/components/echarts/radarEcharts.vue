@@ -8,12 +8,18 @@ export default {
   props: ["id"],
   data() {
     return {
-      myChart: null
+      myChart: null,
+      timeSec: [], //时间/秒
+      fullDate: [], //获取日期
+      sum: 0 //时间总和
     };
   },
   mounted() {
     this.myChart = echarts.init(document.getElementById(this.id));
     this.myChart.setOption(this.readyBarOption());
+  },
+  created() {
+    this.getData();
   },
   beforeDestroy() {
     if (!this.myChart) {
@@ -40,7 +46,7 @@ export default {
         xAxis: {
           type: "category",
           name: "日期",
-          data: ["4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18"]
+          data: []
         },
         yAxis: {
           type: "value",
@@ -49,7 +55,7 @@ export default {
         series: [
           {
             name: "通话时长",
-            data: [12, 23, 33, 43, 45, 12, 8],
+            data: [],
             type: "line",
             smooth: true,
             lineStyle: {
@@ -60,6 +66,56 @@ export default {
         ]
       };
       return data;
+    },
+    getData() {
+      this.$axios.get("/dialogs/").then(v => {
+        if (v.status === 200) {
+          let times = v.data.results;
+          times.map(d => {
+            let dialogTime = d.dialogTime;
+            let da = new Date(d.end);
+            let year = da.getFullYear();
+            let month = da.getMonth() + 1;
+            let date = da.getDate();
+            let full = year + "-" + month + "-" + date;
+            let ss = this.timeToSec(dialogTime);
+            this.timeSec.push(ss);
+            this.fullDate.push(full);
+            this.fullDate = Array.from(new Set(this.fullDate));
+            console.log(this.fullDate);
+          });
+          this.timeSec.forEach(v => {
+            // 拨打时间求和
+            this.sum += v;
+          });
+          this.myChart.setOption({
+            xAxis: {
+              data: [this.fullDate]
+            },
+            series: [
+              {
+                // 根据名字对应到相应的系列
+                data: [this.sum]
+              }
+            ]
+          });
+        } else {
+          this.$message.error(v.statusText);
+        }
+      });
+    },
+    /**
+     * 时间转为秒
+     * @param time 时间(00:00:00)
+     * @returns {string} 时间戳（单位：秒）
+     */
+    timeToSec(time) {
+      let s = "";
+      let hour = time.split(":")[0];
+      let min = time.split(":")[1];
+      let sec = time.split(":")[2];
+      s = Number(hour * 3600) + Number(min * 60) + Number(sec);
+      return s;
     }
   },
   watch: {

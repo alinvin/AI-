@@ -1,8 +1,28 @@
 <template>
     <div class="list_content">
-        <div v-for="item in lists" >
-          <p class="number_text">{{item.number}}</p>
-          <p class="name_text">{{item.name}}</p>
+        <div >
+          <p class="number_text">123次</p>
+          <p class="name_text">呼叫总数</p>
+        </div>
+        <div >
+          <p class="number_text">{{tLength}}次</p>
+          <p class="name_text">接通数</p>
+        </div>
+        <div >
+          <p class="number_text">23%</p>
+          <p class="name_text">接通率</p>
+        </div>
+        <div >
+          <p class="number_text">23H22S</p>
+          <p class="name_text">通话总时长</p>
+        </div>
+        <div >
+          <p class="number_text">22M</p>
+          <p class="name_text">计费分钟数</p>
+        </div>
+        <div >
+          <p class="number_text">00:23:22</p>
+          <p class="name_text">平均通话时长</p>
         </div>
     </div>
 </template>
@@ -11,33 +31,23 @@
 export default {
   data() {
     return {
-      lists: [
-        {
-          number: "123次",
-          name: "呼叫总数"
-        },
-        {
-          number: "512次",
-          name: "接通数"
-        },
-        {
-          number: "42%",
-          name: "接通率"
-        },
-        {
-          number: "123次",
-          name: "呼叫总数"
-        },
-        {
-          number: "23h12s",
-          name: "通话总时长"
-        },
-        {
-          number: "123次",
-          name: "呼叫总数"
-        }
-      ]
+      tLength: ""
     };
+  },
+  created() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      this.$axios.get("/dialogs/").then(v => {
+        if (v.status === 200) {
+          this.tLength = v.data.results.length;
+          console.log(this.tLength);
+        } else {
+          this.$message.error(v.statusText);
+        }
+      });
+    }
   }
 };
 </script>
