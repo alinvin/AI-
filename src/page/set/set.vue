@@ -1,7 +1,13 @@
 //设置
 <template>
-  <div></div>
+  <div>
+  </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+  created() {}
+};
 </script>

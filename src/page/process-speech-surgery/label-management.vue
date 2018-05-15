@@ -1,80 +1,114 @@
-//资料导入
+//标签管理
 <template>
-  <div class="dataImport">
-      <el-tabs type="border-card">
-        <el-tab-pane label="ASR呼叫导入">
-            <div class="h_title">
-              <div></div>
-              导入资料
-            </div>
-            <el-card class="box-card">
-              <div slot="header" class="clearfix">
-                <span>步骤</span>
-              </div>
-              <div class="text item">
-                <p>1、导入新的ASR群呼资料，请先下载客户资料模板文件（不用模板文件将不能成功导入）。此处点击下载模板文件： <el-button class="blue">下载模板文件</el-button></p>
-                <p>2、若为文本（txt）导入,则分隔符为回车、"|"、空格;</p>
-                <p>3、浏览选择要导入的文件并提交：</p>
-                <el-form ref="upload" :model="upload" label-width="90px" class="fs12">
-                  <el-form-item>
-                    <el-upload class="upload-demo" ref="upload" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" :on-remove="handleRemove"
-                      :file-list="fileList"
-                      :auto-upload="false">
-                      <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-                      <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
-                      <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-                    </el-upload>
-                  </el-form-item>
-                <el-form-item label="选择机器人">
-                  <el-checkbox-group v-model="form.type">
-                    <el-checkbox label="代理机器人" name="type"></el-checkbox>
-                    <el-checkbox label="女金融贷款" name="type"></el-checkbox>
-                    <el-checkbox label="房地产" name="type"></el-checkbox>
-                    <el-checkbox label="男金融贷款" name="type"></el-checkbox>
-                  </el-checkbox-group>
-                </el-form-item>
-              <el-form-item>
-                <el-button class="blue" @click="onSubmit">提交</el-button>
-              </el-form-item>
-                </el-form>
-              </div>
-            </el-card>
-            <div class="h_title">
-              <div></div>
-              导入批次日志
-            </div>
-           
+  <div>
+    <template>
+      <el-tabs v-model="activeName">
+        <el-tab-pane label="用户标签" name="first">
+          <el-row>
+              <el-col :offset="22">
+                <el-button type="primary" icon="el-icon-plus" @click="addLabelDialog=true">用户标签</el-button>
+              </el-col>
+          </el-row>
+          <el-table ref="singleTable" :data="tableData" highlight-current-row @current-change="handleCurrentChange" style="width: 100%">
+            <el-table-column property="labelType" label="标签类型" >
+            </el-table-column>
+            <el-table-column property="labelName" label="标签名称" >
+            </el-table-column>
+            <el-table-column property="priority" label="优先级" >
+            </el-table-column>
+            <el-table-column property="processLabel" label="流程标签">
+            </el-table-column>
+            <el-table-column property="number" label="触发次数" >
+            </el-table-column>
+            <el-table-column  label="操作">
+                <template slot-scope="scope">
+                  <el-button type="text">编辑</el-button>
+                  <el-button type="text">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+        </el-tab-pane>
+        <el-tab-pane label="语意标签" name="second">
+           <el-row>
+                <el-col :offset="22">
+                  <el-button type="primary" icon="el-icon-plus" @click="addSematicLabelDialog=true">语意标签</el-button>
+                </el-col>
+            </el-row>
+          <el-table ref="singleTable" :data="tableData2"  style="width: 100%">
+                <el-table-column property="labelName" label="标签名称">
+                </el-table-column>
+                <el-table-column property="keyWords" label="关键字">
+                </el-table-column>
+                <el-table-column  label="操作">
+                    <template slot-scope="scope">
+                      <el-button type="text">编辑</el-button>
+                      <el-button type="text">删除</el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
         </el-tab-pane>
       </el-tabs>
-
-
+    </template>
+    <el-dialog title="新建客户标签"  :visible.sync="addLabelDialog" width="40%">
+      <add-user-label></add-user-label>
+    </el-dialog>
+    <el-dialog title="新建语意标签"  :visible.sync="addSematicLabelDialog" width="40%">
+      <add-semantic-label></add-semantic-label>
+    </el-dialog>
   </div>
 </template>
 <script>
+import AddUserLabel from "@/components/label-management/add-user-label.vue";
+import AddSemanticLabel from "@/components/label-management/add-semantic-label.vue";
+
 export default {
+  components: {
+    AddUserLabel,
+    AddSemanticLabel
+  },
   data() {
     return {
-      model: {},
-      form: {
-        type: []
-      },
-      fileList: []
+      addLabelDialog: false,
+      addSematicLabelDialog: false,
+      activeName: "first",
+      radio: "1",
+      tableData: [
+        {
+          labelType: "A类",
+          labelName: "意向客户",
+          processId: "ser4543",
+          priority: 9,
+          processLabel: "有意向",
+          number: 4
+        },
+        {
+          labelType: "B类",
+          labelName: "意向客户",
+          processId: "ser4543",
+          priority: 9,
+          processLabel: "有意向",
+          number: 4
+        }
+      ],
+      tableData2: [
+        {
+          labelName: "学区房",
+          keyWords: "有意向"
+        },
+        {
+          labelName: "关注医疗",
+          keyWords: "有意向"
+        }
+      ],
+      currentRow: null
     };
   },
   methods: {
-    onSubmit() {
-      console.log("submit!");
-    },
-    submitUpload() {
-      this.$refs.upload.submit();
-    },
-    handleRemove(file, fileList) {
-      console.log(file, fileList);
-    },
-    handlePreview(file) {
-      console.log(file);
+    handleCurrentChange(val) {
+      this.currentRow = val;
+      console.log(val);
+      this.radio = val.id;
     }
   }
 };
 </script>
-

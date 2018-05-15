@@ -33,7 +33,7 @@
             </el-table-column>
             <el-table-column  label="操作">
                 <template slot-scope="scope">
-                  <el-button type="text">编辑</el-button>
+                  <el-button type="text" @click="editFlow(scope)">编辑</el-button>
                   <el-button type="text">标签</el-button>
                   <el-button type="text">通用语料</el-button>
                   <el-button type="text">上传录音</el-button>
@@ -48,6 +48,9 @@
         <el-tab-pane label="流程模板" name="second">流程模板</el-tab-pane>
       </el-tabs>
     </template>
+    <el-dialog title="提示" :visible.sync="flowDialog" width="100%" custom-class="dialog" top="17vh" :modal="false">
+    </el-dialog>
+
 
   </div>
 </template>
@@ -56,6 +59,7 @@ export default {
   data() {
     return {
       activeName: "first",
+      flowDialog: false,
       radio: "1",
       tableData: [
         {
@@ -91,6 +95,10 @@ export default {
       this.currentRow = val;
       console.log(val);
       this.radio = val.id;
+    },
+    editFlow(scope) {
+      console.log(scope);
+      this.flowDialog = true;
     }
   }
 };

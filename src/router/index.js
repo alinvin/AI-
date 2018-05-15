@@ -26,35 +26,44 @@ export default new Router({
                     path: '/process-edit',
                     component: resolve => require(['../page/process-speech-surgery/process-edit.vue'], resolve),
                     meta: {
-                        title: '流程编辑'
+                        title: '流程编辑',
+                        parent: '流程话术'
                     }
                 },
                 {
                     path: '/label-management',
                     component: resolve => require(['../page/process-speech-surgery/label-management.vue'], resolve),
                     meta: {
-                        title: '标签管理'
+                        title: '标签管理',
+                        parent: '流程话术'
+
                     }
                 },
                 {
                     path: '/universal-corpus',
                     component: resolve => require(['../page/process-speech-surgery/universal-corpus.vue'], resolve),
                     meta: {
-                        title: '通用语料'
+                        title: '通用语料',
+                        parent: '流程话术'
+
                     }
                 },
                 {
                     path: '/upload-record',
                     component: resolve => require(['../page/process-speech-surgery/upload-record.vue'], resolve),
                     meta: {
-                        title: '上传录音'
+                        title: '上传录音',
+                        parent: '流程话术'
+
                     }
                 },
                 {
                     path: '/application-records',
                     component: resolve => require(['../page/process-speech-surgery/application-records.vue'], resolve),
                     meta: {
-                        title: '申请记录'
+                        title: '申请记录',
+                        parent: '流程话术'
+
                     }
                 },
                 // 拨打日志
@@ -62,7 +71,8 @@ export default new Router({
                     path: '/call-log',
                     component: resolve => require(['../page/call-log/call-log.vue'], resolve),
                     meta: {
-                        title: '拨打日志'
+                        title: '拨打日志',
+                        parent: ''
                     }
                 },
                 //资源管理
@@ -70,21 +80,24 @@ export default new Router({
                     path: '/resource-management',
                     component: resolve => require(['../page/resource-management/resource-management.vue'], resolve),
                     meta: {
-                        title: '资源管理'
+                        title: '资源管理',
+                        parent: ''
                     }
                 },
                 {
                     path: '/employee-management',
                     component: resolve => require(['../page/employee-management/employee-management.vue'], resolve),
                     meta: {
-                        title: '员工管理'
+                        title: '员工管理',
+                        parent: ''
                     }
                 },
                 {
                     path: '/set',
                     component: resolve => require(['../page/set/set.vue'], resolve),
                     meta: {
-                        title: '设置'
+                        title: '设置',
+                        parent: ''
                     }
                 }
             ]

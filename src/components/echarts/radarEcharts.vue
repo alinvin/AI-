@@ -41,7 +41,6 @@ export default {
               width: 2
             }
           }
-          // formatter: "{b0}: {c0}<br />{b1}: {c0}"
         },
         xAxis: {
           type: "category",

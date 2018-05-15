@@ -37,9 +37,11 @@
 </template>
 
 <script>
-import pieLegend from "../components/echarts/pieLegend.vue";
-import pieEcharts from "../components/echarts/pieEcharts.vue";
-import radarEcharts from "../components/echarts/radarEcharts.vue";
+import pieLegend from "@/components/echarts/pieLegend.vue";
+import pieEcharts from "@/components/echarts/pieEcharts.vue";
+import radarEcharts from "@/components/echarts/radarEcharts.vue";
+import { mapState, mapMutations, mapActions } from "vuex";
+
 export default {
   data() {
     return {};
@@ -49,7 +51,9 @@ export default {
     pieEcharts,
     radarEcharts
   },
-  created() {},
+  created() {
+    console.log(this.$store.state.nav_state);
+  },
   methods: {}
 };
 </script>
