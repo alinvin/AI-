@@ -37,8 +37,8 @@ a {
     background: #fff;
     margin: 20px;
     padding: 20px;
-    height: calc(100% - 110px);
     border-radius: 4px;
+    min-height: calc(100% - 120px);
 }
 
 .content-collapse {

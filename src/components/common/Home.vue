@@ -5,12 +5,11 @@
         <div class="content-box" :class="{'content-collapse':collapse}">
             <v-tags></v-tags>
             <div class="content">
-                <el-breadcrumb separator="/">
+                <el-breadcrumb separator="/" style="margin-bottom:10px;">
                         <el-breadcrumb-item>{{menuName}}</el-breadcrumb-item>
                         <el-breadcrumb-item><a>{{subName}}</a></el-breadcrumb-item>
                 </el-breadcrumb>
                 <transition name="move" mode="out-in">
-                    
                     <keep-alive>
                         <router-view></router-view>
                     </keep-alive>

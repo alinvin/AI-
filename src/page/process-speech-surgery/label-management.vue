@@ -14,7 +14,7 @@
             </el-table-column>
             <el-table-column property="labelName" label="标签名称" >
             </el-table-column>
-            <el-table-column property="priority" label="优先级" >
+            <el-table-column propcleerty="priority" label="优先级" >
             </el-table-column>
             <el-table-column property="processLabel" label="流程标签">
             </el-table-column>

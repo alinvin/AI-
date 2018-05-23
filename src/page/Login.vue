@@ -4,17 +4,17 @@
           <div v-show="show2" class="flex_content">
             <div class="ms-title">Ai智能语音后台管理系统</div>
             <div class="ms-login" >
-                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0px" class="demo-ruleForm">
+                <el-form :model="authUser" :rules="rules" ref="authUser" label-width="0px" class="demo-authUser">
                     <el-form-item prop="username">
-                        <el-input v-model="ruleForm.username" placeholder="username"></el-input>
+                        <el-input v-model="authUser.username" placeholder="username"></el-input>
                     </el-form-item>
                     <el-form-item prop="password">
-                        <el-input type="password" placeholder="password" v-model="ruleForm.password" @keyup.enter.native="submitForm('ruleForm')"></el-input>
+                        <el-input type="password" placeholder="password" v-model="authUser.password" @keyup.enter.native="submitForm('authUser')"></el-input>
                     </el-form-item>
                     <div class="login-btn">
-                        <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+                        <el-button type="primary" ref="ref_btn_login" @click="submitForm('authUser')">登录</el-button>
                     </div>
-                    <p style="font-size:12px;line-height:30px;color:#999;">Tips : 用户名和密码随便填。</p>
+                    <p style="font-size:12px;line-height:30px;color:#999;">Tips : 需要注册用户名，请联系管理员</p>
                 </el-form>
             </div>
           </div>
@@ -31,9 +31,9 @@ export default {
   data: function() {
     return {
       show2: false,
-      ruleForm: {
+      authUser: {
         username: "admin",
-        password: "123123"
+        password: "123456"
       },
       rules: {
         username: [
@@ -50,7 +50,27 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          localStorage.setItem("ms_username", this.ruleForm.username);
+          // this.$axios
+          //   .post("authUserLogin", {
+          //     username: this.authUser.username,
+          //     password: this.authUser.password
+          //   })
+          //   .then(d => {
+          //     this.$refs.ref_btn_login.$el.textContent = "登录中...";
+          //     if (d.status === 200) {
+          //       localStorage.setItem("ms_username", this.authUser.username);
+          //       setTimeout(() => {
+          //         this.$router.push("/");
+          //       }, 100);
+          //       localStorage.setItem("token", d.data.token);
+          //     }
+          //   })
+          //   .catch(erro => {
+          //     if (erro.response.status === 400) {
+          //       this.$message("用户名或密码错误！");
+          //     }
+          //   });
+          localStorage.setItem("ms_username", this.authUser.username);
           this.$router.push("/");
         } else {
           console.log("error submit!!");
