@@ -69,6 +69,11 @@ export default {
           title: "拨打日志"
         },
         {
+          icon: "icon-dianhua",
+          index: "number-management",
+          title: "号码库管理"
+        },
+        {
           icon: "icon-_ziyuanguanli",
           index: "resource-management",
           title: "资源管理"
@@ -77,12 +82,12 @@ export default {
           icon: "icon-manage_staff",
           index: "employee-management",
           title: "员工管理"
-        },
-        {
-          icon: "icon-shezhizhongxin",
-          index: "set",
-          title: "设置"
         }
+        // {
+        //   icon: "icon-shezhizhongxin",
+        //   index: "set",
+        //   title: "设置"
+        // }
       ]
     };
   },
@@ -101,7 +106,7 @@ export default {
 </script>
 
 <style scoped>
-@import "//at.alicdn.com/t/font_653281_qfn6wbxrnsysnhfr.css";
+@import "//at.alicdn.com/t/font_653281_z16eexci5m079zfr.css";
 .icon {
   font-size: 20px;
   margin-right: 8px;

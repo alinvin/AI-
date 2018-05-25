@@ -5,7 +5,7 @@
         <div class="content-box" :class="{'content-collapse':collapse}">
             <v-tags></v-tags>
             <div class="content">
-                <el-breadcrumb separator="/" style="margin-bottom:10px;">
+                <el-breadcrumb :separator="str" style="margin-bottom:10px;" ref="bread-crumb">
                         <el-breadcrumb-item>{{menuName}}</el-breadcrumb-item>
                         <el-breadcrumb-item><a>{{subName}}</a></el-breadcrumb-item>
                 </el-breadcrumb>
@@ -29,7 +29,8 @@ export default {
     return {
       collapse: false,
       menuName: "",
-      subName: ""
+      subName: "",
+      str: ""
     };
   },
   components: {
@@ -41,19 +42,21 @@ export default {
     bus.$on("collapse", msg => {
       this.collapse = msg;
     });
+    this.getName();
   },
   mounted() {
     console.log(this.$route.meta.title);
-    this.getName();
   },
   methods: {
     getName() {
       if (this.$route.meta.parent) {
         this.menuName = this.$route.meta.parent;
         this.subName = this.$route.meta.title;
+        this.str = "/";
       } else {
-        this.menuName = this.$route.meta.title;
-        this.subName = "";
+        this.menuName = "";
+        this.subName = this.$route.meta.title;
+        this.str = "";
       }
     }
   }

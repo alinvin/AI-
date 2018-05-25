@@ -75,6 +75,15 @@ export default new Router({
                         parent: ''
                     }
                 },
+                // 号码库管理
+                {
+                    path: '/number-management',
+                    component: resolve => require(['../page/number-management/number-management.vue'], resolve),
+                    meta: {
+                        title: '号码库管理',
+                        parent: ''
+                    }
+                },
                 //资源管理
                 {
                     path: '/resource-management',
@@ -92,14 +101,14 @@ export default new Router({
                         parent: ''
                     }
                 },
-                {
-                    path: '/set',
-                    component: resolve => require(['../page/set/set.vue'], resolve),
-                    meta: {
-                        title: '设置',
-                        parent: ''
-                    }
-                }
+                // {
+                //     path: '/set',
+                //     component: resolve => require(['../page/set/set.vue'], resolve),
+                //     meta: {
+                //         title: '设置',
+                //         parent: ''
+                //     }
+                // }
             ]
         },
         {

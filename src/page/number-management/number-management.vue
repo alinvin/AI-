@@ -1,6 +1,6 @@
-//拨打电话
+//号码库管理
 <template>
-  <div class="call-log">
+  <div>
     <el-form :inline="true" ref="data-form" label-position="left">
       <el-form-item label="开始时间:">
         <el-date-picker v-model="seach.startTime" type="date" placeholder="选择日期"></el-date-picker>
@@ -14,6 +14,10 @@
       <el-form-item>
         <el-button type="primary">搜索</el-button>
         <el-button type="text" @click="seniorFun">高级查找</el-button>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="text">excel导入</el-button>
+        <el-button type="primary">添加号码</el-button>
       </el-form-item>
       <div v-show="seniorSeach">
         <el-form-item label="方案:">
@@ -45,37 +49,41 @@
     <!-- table -->
     <el-table :data="tableData" style="width: 100%">
         <el-table-column type="index" label="序号"></el-table-column>
-        <el-table-column label="手机号">
-          <template slot-scope="scope">
-            <el-button type="text">{{scope.row.mobile}}</el-button>
+        <el-table-column  label="手机号" prop="mobile" width="120"></el-table-column>
+        <el-table-column  label="运营商" prop="operators" width="120"></el-table-column>
+        <el-table-column  label="姓名" prop="name" width="120"></el-table-column>
+        <el-table-column  label="性别" prop="sex" ></el-table-column>
+        <el-table-column  label="省" prop="province" width="120"></el-table-column>
+        <el-table-column  label="市" prop="city" width="120"></el-table-column>
+        <el-table-column  label="标签" prop="label" width="120"></el-table-column>
+        <el-table-column  label="公司" prop="company" width="220"></el-table-column>
+        <el-table-column  label="免打扰" prop="excuse" width="120"></el-table-column>
+        <el-table-column  label="号码标签" prop="numberLabel" width="120"></el-table-column>
+        <el-table-column  label="备注" prop="note" width="220"></el-table-column>
+        <el-table-column label="操作" fixed="right" width="220">
+          <template slot-scope="scope" >
+              <el-button type="text" @click="logFun(scope.row)">拨打日志</el-button>
+              <el-button type="text">修改</el-button>
+              <el-button type="text">删除</el-button>
           </template>
         </el-table-column>
-        <el-table-column label="方案" prop="case"></el-table-column>
-        <el-table-column label="等级">
-          <template slot-scope="scope">
-            <el-button circle :class="scope.row.grade" size="small">{{scope.row.grade}}</el-button>
-          </template>
-        </el-table-column>
-        <el-table-column label="时长" prop="sesond"></el-table-column>
-        <el-table-column label="负责人" prop="head"></el-table-column>
-        <el-table-column label="关键词" prop="keywords"></el-table-column>
-        <el-table-column label="客户类型" prop="customerType"></el-table-column>
-        <el-table-column label="号码标签" prop="numberLabel"></el-table-column>
-        <el-table-column label="呼出时间" prop="outTime"></el-table-column>
-        <el-table-column label="备注" prop="note"></el-table-column>
-        <el-table-column label="操作">
-          <template slot-scope="scope">
-              <el-button type="text">详情</el-button>
-          </template>
-        </el-table-column>
-        
     </el-table>
+    <!-- 拨打日志 -->
+    <el-dialog title="拨打日志" :visible.sync="logDialog" width="60%" >
+      <log :logDetails="logDetails" ref="log"></log>
+    </el-dialog>
   </div>
 </template>
 <script>
+import Log from "@/components/number-management/log.vue";
 export default {
+  components: {
+    Log
+  },
   data() {
     return {
+      logDetails: "",
+      logDialog: false,
       seniorSeach: false,
       seach: {
         startTime: "",
@@ -88,16 +96,17 @@ export default {
       },
       tableData: [
         {
-          mobile: "18629132727",
-          case: "二分001",
-          grade: "C",
-          sesond: "32秒",
-          head: "史蒂夫",
-          keywords: "你师父，在不",
-          customerType: "有效客户",
-          numberLabel: "001",
-          outTime: "2018-12-11",
-          note: "二分"
+          mobile: "18801776781",
+          operators: "大唐电信",
+          name: "欧恩",
+          sex: "男",
+          province: "广东省",
+          city: "深圳市",
+          label: "局长",
+          company: "深圳市税务局",
+          excuse: "000",
+          numberLabel: "公务员",
+          note: "勿打扰"
         }
       ]
     };
@@ -109,30 +118,17 @@ export default {
       } else {
         this.seniorSeach = true;
       }
+    },
+    //拨打日志
+    logFun(scope) {
+      this.logDialog = true;
+      this.logDetails = scope;
     }
   }
 };
 </script>
-<style lang="less">
-.is-circle {
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  line-height: 6px;
-}
-.A {
-  background: rgb(245, 108, 108);
-  color: #fff;
-}
-.B {
-  background: rgb(230, 162, 60);
-  color: #fff;
-}
-.C {
-  background: rgb(64, 158, 255);
-  color: #fff;
+<style lang="less" scoped>
+.el-dialog {
+  height: 650px;
 }
 </style>
-
-
