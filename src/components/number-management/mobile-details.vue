@@ -29,7 +29,7 @@
       <el-col :span="12" :offset="1" style="background:rgb(239, 239, 239);">
         <div class="mess_container">
           <div class="user_Logo">
-
+            
           </div>
         </div>
       </el-col>
