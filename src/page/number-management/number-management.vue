@@ -17,7 +17,7 @@
       </el-form-item>
       <el-form-item>
         <el-button type="text">excel导入</el-button>
-        <el-button type="primary">添加号码</el-button>
+        <el-button type="primary" @click="addNumberFun">添加号码</el-button>
       </el-form-item>
       <div v-show="seniorSeach">
         <el-form-item label="方案:">
@@ -69,22 +69,30 @@
         </el-table-column>
     </el-table>
     <!-- 拨打日志 -->
-    <el-dialog title="拨打日志" :visible.sync="logDialog" width="60%" >
+    <el-dialog title="拨打日志" :visible.sync="logDialog" width="60%">
       <log :logDetails="logDetails" ref="log"></log>
+    </el-dialog>
+    <!-- 添加号码 -->
+     <el-dialog title="添加号码" :visible.sync="addNumberDialog" width="50%">
+       <add-number></add-number>
     </el-dialog>
   </div>
 </template>
 <script>
 import Log from "@/components/number-management/log.vue";
+import AddNumber from "@/components/number-management/add-number.vue";
+
 export default {
   components: {
-    Log
+    Log,
+    AddNumber
   },
   data() {
     return {
       logDetails: "",
       logDialog: false,
       seniorSeach: false,
+      addNumberDialog: false,
       seach: {
         startTime: "",
         endTime: "",
@@ -123,6 +131,12 @@ export default {
     logFun(scope) {
       this.logDialog = true;
       this.logDetails = scope;
+    },
+    /**
+     * 添加号码
+     */
+    addNumberFun() {
+      this.addNumberDialog = true;
     }
   }
 };

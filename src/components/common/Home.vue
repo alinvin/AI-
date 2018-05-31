@@ -5,10 +5,6 @@
         <div class="content-box" :class="{'content-collapse':collapse}">
             <v-tags></v-tags>
             <div class="content">
-                <el-breadcrumb :separator="str" style="margin-bottom:10px;" ref="bread-crumb">
-                        <el-breadcrumb-item>{{menuName}}</el-breadcrumb-item>
-                        <el-breadcrumb-item><a>{{subName}}</a></el-breadcrumb-item>
-                </el-breadcrumb>
                 <transition name="move" mode="out-in">
                     <keep-alive>
                         <router-view></router-view>
@@ -42,23 +38,20 @@ export default {
     bus.$on("collapse", msg => {
       this.collapse = msg;
     });
-    this.getName();
   },
-  mounted() {
-    console.log(this.$route.meta.title);
-  },
+
   methods: {
-    getName() {
-      if (this.$route.meta.parent) {
-        this.menuName = this.$route.meta.parent;
-        this.subName = this.$route.meta.title;
-        this.str = "/";
-      } else {
-        this.menuName = "";
-        this.subName = this.$route.meta.title;
-        this.str = "";
-      }
-    }
+    // getName() {
+    //   if (this.$route.meta.parent) {
+    //     this.menuName = this.$route.meta.parent;
+    //     this.subName = this.$route.meta.title;
+    //     this.str = "/";
+    //   } else {
+    //     this.menuName = "";
+    //     this.subName = this.$route.meta.title;
+    //     this.str = "";
+    //   }
+    // }
   }
 };
 </script>

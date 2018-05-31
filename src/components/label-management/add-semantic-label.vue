@@ -6,7 +6,7 @@
         <el-input type="labelName" v-model="labelForm.age"></el-input>
       </el-form-item>
     <el-form-item label="活动形式:" prop="keyWords">
-      <el-input type="textarea" v-model="labelForm.keyWords"></el-input>
+      <el-input type="textarea" v-model="labelForm.keyWords" placeholder="输入关键字，多个标签用‘；’隔开"></el-input>
     </el-form-item>
       <div class="btn_content">
         <el-button type="primary" @click="submitForm('labelForm')">确定</el-button>

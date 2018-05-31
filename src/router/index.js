@@ -12,7 +12,7 @@ export default new Router({
             path: '/',
             component: resolve => require(['../components/common/Home.vue'], resolve),
             meta: {
-                title: '自述文件'
+                title: ''
             },
             children: [{
                     path: '/dashboard',
@@ -23,47 +23,11 @@ export default new Router({
                 },
                 // 流程话术
                 {
-                    path: '/process-edit',
-                    component: resolve => require(['../page/process-speech-surgery/process-edit.vue'], resolve),
+                    path: '/process-speech-surgery',
+                    component: resolve => require(['../page/process-speech-surgery/process-speech-surgery.vue'], resolve),
                     meta: {
-                        title: '流程编辑',
-                        parent: '流程话术'
-                    }
-                },
-                {
-                    path: '/label-management',
-                    component: resolve => require(['../page/process-speech-surgery/label-management.vue'], resolve),
-                    meta: {
-                        title: '标签管理',
-                        parent: '流程话术'
-
-                    }
-                },
-                {
-                    path: '/universal-corpus',
-                    component: resolve => require(['../page/process-speech-surgery/universal-corpus.vue'], resolve),
-                    meta: {
-                        title: '通用语料',
-                        parent: '流程话术'
-
-                    }
-                },
-                {
-                    path: '/upload-record',
-                    component: resolve => require(['../page/process-speech-surgery/upload-record.vue'], resolve),
-                    meta: {
-                        title: '上传录音',
-                        parent: '流程话术'
-
-                    }
-                },
-                {
-                    path: '/application-records',
-                    component: resolve => require(['../page/process-speech-surgery/application-records.vue'], resolve),
-                    meta: {
-                        title: '申请记录',
-                        parent: '流程话术'
-
+                        title: '流程话术',
+                        parent: ''
                     }
                 },
                 // 拨打日志
@@ -101,14 +65,6 @@ export default new Router({
                         parent: ''
                     }
                 },
-                // {
-                //     path: '/set',
-                //     component: resolve => require(['../page/set/set.vue'], resolve),
-                //     meta: {
-                //         title: '设置',
-                //         parent: ''
-                //     }
-                // }
             ]
         },
         {

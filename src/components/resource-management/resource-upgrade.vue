@@ -4,7 +4,7 @@
     <el-form :model="resourceValidateForm" ref="resourceValidateForm" label-width="100px" class="demo-ruleForm">
        <el-form-item label="现有机器人:"  >
         <span>6个</span>
-        <el-button type="text" icon="el-icon-plus"  @click="addRobot"></el-button>
+        <el-button type="text" icon="el-icon-plus"  @click="addRobot">添加机器人数</el-button>
       </el-form-item>
       <el-form-item label="机器人数:" prop="robotNumber" v-show="robotShow">
         <el-input type="text" v-model="resourceValidateForm.robotNumber"></el-input>

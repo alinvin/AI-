@@ -47,7 +47,7 @@
         <el-table-column type="index" label="序号"></el-table-column>
         <el-table-column label="手机号">
           <template slot-scope="scope">
-            <el-button type="text">{{scope.row.mobile}}</el-button>
+            <el-button type="text" @click="editMessageFun(scope)">{{scope.row.mobile}}</el-button>
           </template>
         </el-table-column>
         <el-table-column label="方案" prop="case"></el-table-column>
@@ -59,24 +59,49 @@
         <el-table-column label="时长" prop="sesond"></el-table-column>
         <el-table-column label="负责人" prop="head"></el-table-column>
         <el-table-column label="关键词" prop="keywords"></el-table-column>
-        <el-table-column label="客户类型" prop="customerType"></el-table-column>
+        <el-table-column label="客户类型">
+          <template slot-scope="scope">
+            <el-button type="text" @click="customerTypeFun(scope)">{{scope.row.customerType}}</el-button>
+          </template>
+        </el-table-column>
         <el-table-column label="号码标签" prop="numberLabel"></el-table-column>
         <el-table-column label="呼出时间" prop="outTime"></el-table-column>
         <el-table-column label="备注" prop="note"></el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
-              <el-button type="text">详情</el-button>
+              <el-button type="text" @click="detailsFun(scope)">详情</el-button>
           </template>
         </el-table-column>
-        
     </el-table>
+    <el-dialog :title="'详情：'+logDetails.mobile" :visible.sync="detailsDialog" width="70%">
+       <mobile-details></mobile-details>
+    </el-dialog>
+    <el-dialog title="编辑客户信息" :visible.sync="editMessageDialog" width="40%" >
+       <edit-message></edit-message>
+    </el-dialog>
+     <el-dialog title="修改类型" :visible.sync="editTypeDialog" width="30%" >
+       <edit-type></edit-type>
+    </el-dialog>
   </div>
 </template>
 <script>
+import MobileDetails from "@/components/number-management/mobile-details.vue";
+import EditMessage from "@/components/call-log/edit-message.vue";
+import EditType from "@/components/call-log/edit-type.vue"; //修改客户类型
+
 export default {
+  components: {
+    MobileDetails,
+    EditMessage,
+    EditType
+  },
   data() {
     return {
       seniorSeach: false,
+      detailsDialog: false,
+      editMessageDialog: false,
+      editTypeDialog: false,
+      logDetails: "",
       seach: {
         startTime: "",
         endTime: "",
@@ -109,6 +134,22 @@ export default {
       } else {
         this.seniorSeach = true;
       }
+    },
+    detailsFun(scope) {
+      this.logDetails = scope.row;
+      this.detailsDialog = true;
+    },
+    /**
+     * 编辑客户信息
+     */
+    editMessageFun(scope) {
+      this.editMessageDialog = true;
+    },
+    /**
+     * 编辑客户类型
+     */
+    customerTypeFun(scope) {
+      this.editTypeDialog = true;
     }
   }
 };

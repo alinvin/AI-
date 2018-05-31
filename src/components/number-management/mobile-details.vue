@@ -3,7 +3,7 @@
   <div>
     <el-row type="flex">
       <el-col :span="11">
-        <data-grid class="data-grid" :labelWidth="100" labelAlign="center" contentAlign="left">
+        <data-grid class="data-grid" :labelWidth="100"  contentAlign="left" style="text-align:center">
           <data-grid-item label="电话" :span="2">{{23242342}}</data-grid-item>
           <data-grid-item label="时长(秒)" :span="2">{{2342342324}}</data-grid-item>
           <data-grid-item label="拨出电话" :span="2">{{2342342324}}</data-grid-item>
@@ -26,22 +26,20 @@
           </data-grid-item>
         </data-grid>
       </el-col>
-      <el-col :span="12" :offset="1" style="background:rgb(239, 239, 239);">
-        <div class="mess_container">
-          <div class="user_Logo">
-            
-          </div>
-        </div>
+      <el-col :span="12" :offset="1" style="background: rgb(239, 239, 239);">
+        <chat-box></chat-box>
       </el-col>
     </el-row>
   </div>
 </template>
 <script>
+import ChatBox from "@/components/number-management/chat-box.vue";
 import { DataGrid, DataGridItem } from "@zct1989/vue-component";
 export default {
   components: {
     DataGrid,
-    DataGridItem
+    DataGridItem,
+    ChatBox
   },
   props: ["deme"],
   data() {
@@ -50,9 +48,5 @@ export default {
 };
 </script>
 <style lang="less">
-.mess_container {
-  background: #fff;
-  display: flex;
-}
 </style>
 

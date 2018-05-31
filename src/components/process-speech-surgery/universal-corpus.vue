@@ -58,8 +58,8 @@
       </el-col>
     </el-row>
     <!-- 添加语料弹窗 -->
-    <el-dialog title="添加语料" :visible.sync="addCorpusDialog" width="50%"> 
-      <add-corpus></add-corpus>
+    <el-dialog title="添加语料" :visible.sync="addCorpusDialog" width="50%" append-to-body @close="close"> 
+      <add-corpus ref="add-corpus"></add-corpus>
     </el-dialog>
   </div>
 </template>
@@ -104,6 +104,12 @@ export default {
   },
   components: {
     AddCorpus
+  },
+  methods: {
+    close() {
+      let addCorpus = this.$refs["add-corpus"];
+      addCorpus.emptyData();
+    }
   }
 };
 </script>

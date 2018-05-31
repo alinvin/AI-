@@ -19,7 +19,7 @@
       <el-button type="primary">确定</el-button>
     </div>
     <!-- 详情弹窗 -->
-    <el-dialog :title="'详情：'+logDetails.mobile" :visible.sync="detailsDialog" width="70%" append-to-body>
+    <el-dialog :title="'详情：'+logDetails.mobile" :visible.sync="detailsDialog" width="70%" append-to-body >
        <mobile-details></mobile-details>
     </el-dialog>
   </div>

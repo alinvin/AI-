@@ -49,10 +49,10 @@
         </el-tab-pane>
       </el-tabs>
     </template>
-    <el-dialog title="新建客户标签"  :visible.sync="addLabelDialog" width="40%">
+    <el-dialog title="新建客户标签"  :visible.sync="addLabelDialog" width="40%" append-to-body>
       <add-user-label></add-user-label>
     </el-dialog>
-    <el-dialog title="新建语意标签"  :visible.sync="addSematicLabelDialog" width="40%">
+    <el-dialog title="新建语意标签"  :visible.sync="addSematicLabelDialog" width="40%" append-to-body>
       <add-semantic-label></add-semantic-label>
     </el-dialog>
   </div>

@@ -38,30 +38,8 @@ export default {
         },
         {
           icon: "icon-liucheng",
-          index: "table",
-          title: "流程话术",
-          subs: [
-            {
-              index: "process-edit",
-              title: "流程编辑"
-            },
-            {
-              index: "label-management",
-              title: "标签管理"
-            },
-            {
-              index: "universal-corpus",
-              title: "通用语料"
-            },
-            {
-              index: "upload-record",
-              title: "上传录音"
-            },
-            {
-              index: "application-records",
-              title: "申请记录"
-            }
-          ]
+          index: "process-speech-surgery",
+          title: "流程话术"
         },
         {
           icon: "icon-dianhuajilu",
@@ -83,11 +61,6 @@ export default {
           index: "employee-management",
           title: "员工管理"
         }
-        // {
-        //   icon: "icon-shezhizhongxin",
-        //   index: "set",
-        //   title: "设置"
-        // }
       ]
     };
   },
@@ -106,7 +79,7 @@ export default {
 </script>
 
 <style scoped>
-@import "//at.alicdn.com/t/font_653281_z16eexci5m079zfr.css";
+@import "//at.alicdn.com/t/font_653281_br8tzxs79cu15rk9.css";
 .icon {
   font-size: 20px;
   margin-right: 8px;
