@@ -32,15 +32,27 @@
           <el-button type="primary">保存</el-button>
         </el-form-item>
       </el-form>
-      <div class="canvas-box">
-          <canvas id="canvas" ></canvas>
+      <div class="plumb-box">
+       <div class="left">
+         <el-button>会话结束</el-button>
+         <el-button>流程开始</el-button>
+         <el-button>子流程步骤</el-button>
+         <el-button>yes/no条件</el-button>
+         <el-button>计数条件</el-button>
+         <el-button>流程结束</el-button>
+         <el-button>步骤</el-button>
+         <el-button>备注</el-button>
+         
+       </div>
+        <div ref="plumb"></div>
       </div>
   </div>
 </template>
 
 <script>
 import * as $ from "jquery";
-import "../../../static/js/jtopo.js";
+import jsplumb from "jsplumb";
+
 export default {
   data() {
     return {
@@ -53,23 +65,9 @@ export default {
     };
   },
   created() {
-    this.resizeCanvas();
+    jsPlumb.setContainer(this.$refs["plumb"]);
   },
-  methods: {
-    resizeCanvas() {
-      var canvas = document.getElementById("canvas");
-      var stage = new JTopo.Stage(canvas); // 创建一个舞台对象
-      var scene = new JTopo.Scene(stage); // 创建一个场景对象
-
-      var node = new JTopo.Node("Hello"); // 创建一个节点
-      node.setLocation(300, 200); // 设置节点坐标
-      node.rotate = Math.random(); // 旋转角度
-      node.scaleX = Math.random(); // 水平方向的缩放
-      node.scaleY = Math.random(); // 垂直方向的缩放
-      node.alpha = Math.random(); // 透明度
-      node.setImage("../../../static/img/img.jpg"); // 设置图片
-    }
-  }
+  methods: {}
 };
 </script>
 
@@ -77,10 +75,22 @@ export default {
 .from {
   margin-top: 15px;
 }
-.canvas-box {
+.plumb-box {
   border: 1px solid #d9d9d9;
   width: 100%;
   height: 100%;
   min-height: 500px;
+  .left {
+    width: 200px;
+    border-right: 1px solid #d9d9d9;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: initial;
+  }
+  .el-button + .el-button {
+    margin-left: 0;
+    margin-top: 10px;
+  }
 }
 </style>
