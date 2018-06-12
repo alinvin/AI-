@@ -7,6 +7,7 @@ import ElementUI from 'element-ui';
 import http from '@/utils/http.js';
 import 'element-ui/lib/theme-chalk/index.css'; // 默认主题
 import "babel-polyfill";
+import '../static/js/jtopo';
 
 Vue.use(ElementUI, {
     size: 'small'

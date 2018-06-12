@@ -66,6 +66,7 @@ export default {
     AddUserLabel,
     AddSemanticLabel
   },
+  props: ["fun"],
   data() {
     return {
       addLabelDialog: false,
@@ -102,6 +103,9 @@ export default {
       ],
       currentRow: null
     };
+  },
+  mounted() {
+    console.log(this.fun, 221);
   },
   methods: {
     handleCurrentChange(val) {

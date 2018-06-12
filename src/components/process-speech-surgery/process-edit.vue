@@ -33,26 +33,14 @@
         </el-form-item>
       </el-form>
       <div class="plumb-box">
-       <div class="left">
-         <el-button>会话结束</el-button>
-         <el-button>流程开始</el-button>
-         <el-button>子流程步骤</el-button>
-         <el-button>yes/no条件</el-button>
-         <el-button>计数条件</el-button>
-         <el-button>流程结束</el-button>
-         <el-button>步骤</el-button>
-         <el-button>备注</el-button>
-         
-       </div>
-        <div ref="plumb"></div>
+          <jsplumb-toolkit id="toolkit" surface-id="surfaceId"></jsplumb-toolkit>
       </div>
   </div>
 </template>
 
 <script>
 import * as $ from "jquery";
-import jsplumb from "jsplumb";
-
+import jsPlumb from "jsPlumb";
 export default {
   data() {
     return {
@@ -64,9 +52,10 @@ export default {
       }
     };
   },
-  created() {
-    jsPlumb.setContainer(this.$refs["plumb"]);
+  mounted() {
+    console.log(jsPlumb, 22);
   },
+  created() {},
   methods: {}
 };
 </script>
@@ -80,17 +69,10 @@ export default {
   width: 100%;
   height: 100%;
   min-height: 500px;
-  .left {
-    width: 200px;
-    border-right: 1px solid #d9d9d9;
-    min-height: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: initial;
-  }
   .el-button + .el-button {
     margin-left: 0;
     margin-top: 10px;
   }
 }
 </style>
+
