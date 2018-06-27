@@ -8,14 +8,18 @@ import http from '@/utils/http.js';
 import 'element-ui/lib/theme-chalk/index.css'; // 默认主题
 import "babel-polyfill";
 import '../static/js/jtopo';
+import JsPlumb from "jsPlumb";
+
 
 Vue.use(ElementUI, {
     size: 'small'
 });
 Vue.prototype.$axios = axios;
+Vue.prototype.$jsPlumb = JsPlumb.jsPlumb
 
 // axios.defaults.baseURL = 'http://192.168.3.146:8120/ai_voice/v1';
-axios.defaults.baseURL = 'http://192.168.3.109:9000/business-service/api/authUserController/';
+axios.defaults.baseURL = 'http://192.168.3.146:8220/VoiceBotSerivce/v1/';
+// axios.defaults.baseURL = 'http://192.168.3.109:9000/business-service/api/authUserController/';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 axios.defaults.timeout = 20000; //响应时间
 

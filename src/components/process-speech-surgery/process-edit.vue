@@ -1,46 +1,28 @@
+
 //流程编辑
 <template>
   <div>
-      <el-row>
-        <el-button>主流程</el-button>
-        <el-button>其他还款方式</el-button>
-        <el-button>协商还款</el-button>
-        <el-button>明天是否还款</el-button>
-        <el-button>强调还款时间</el-button>
-        <el-button>开场白</el-button>
-        <el-button>告知还款方式</el-button>
-        <el-button>确认还款详情</el-button>
-        <el-button>银行代扣还款详情</el-button>
-        <el-button type="text">新建子流程</el-button>
-        <el-button type="text">流程检测</el-button>
-        <el-button type="text">测试流程</el-button>
-      </el-row>
-      <el-form :model="form" label-width="80px" :inline="true" class="from" label-position="left">
-        <el-form-item label="流程名称">
-          <el-input v-model="form.name"></el-input>
-        </el-form-item>
-        <el-form-item label="备注">
-          <el-input v-model="form.notes"></el-input>
-        </el-form-item>
-        <el-form-item label="流程ID">
-          <el-input v-model="form.id"></el-input>
-        </el-form-item>
-        <el-form-item label="机器人">
-          <el-input v-model="form.robot"></el-input>
-        </el-form-item>
-        <el-form-item >
-          <el-button type="primary">保存</el-button>
-        </el-form-item>
-      </el-form>
+     <el-row>
+        <el-button @click="appendLeftNode('left-node')" ref="left-node">添加左节点</el-button>
+        <el-button @click="appendRightNode('right-node')" ref="right-node">添加右节点</el-button>
+        <el-button @click="appendDefaultNode('default-node')" ref="default-node">添加默认节点</el-button>
+     </el-row>
       <div class="plumb-box">
-          <jsplumb-toolkit id="toolkit" surface-id="surfaceId"></jsplumb-toolkit>
+          <el-tree :data="treeData" @node-click="handleNodeClick" :render-content="renderContent"></el-tree>
       </div>
+      <el-dialog :title="dialogTitle" :visible.sync="dialogVisible" width="30%" append-to-body>
+      <div class="demo-input-suffix">
+        <span>属性方式：</span>
+        <el-input placeholder="请输入节点名称"  v-model="input2" style="width:67%;"></el-input>
+      </div>
+      <div slot="footer"> 
+        <el-button>确定</el-button>
+      </div>
+      </el-dialog>
   </div>
 </template>
 
 <script>
-import * as $ from "jquery";
-import jsPlumb from "jsPlumb";
 export default {
   data() {
     return {
@@ -49,14 +31,57 @@ export default {
         notes: "",
         id: "",
         robot: ""
-      }
+      },
+      treeData: [],
+      dialogVisible: false,
+      dialogTitle: ""
     };
   },
-  mounted() {
-    console.log(jsPlumb, 22);
-  },
+  mounted() {},
   created() {},
-  methods: {}
+  methods: {
+    appendLeftNode(node) {
+      this.dialogTitle = this.$refs[node].$el.childNodes[2].innerText;
+      this.dialogVisible = true;
+      console.log(this.dialogTitle, 1);
+    },
+    appendRightNode(node) {
+      this.dialogTitle = this.$refs[node].$el.childNodes[2].innerText;
+      this.dialogVisible = true;
+      console.log(this.dialogTitle, 1);
+    },
+    appendDefaultNode(node) {
+      this.dialogTitle = this.$refs[node].$el.childNodes[2].innerText;
+      this.dialogVisible = true;
+      console.log(this.dialogTitle, 1);
+    },
+    handleNodeClick(data) {
+      console.log(data);
+    },
+    renderContent(h, { node, data, store }) {
+      return (
+        <span class="custom-tree-node">
+          <span>{node.label}</span>
+          <span>
+            <el-button
+              size="mini"
+              type="text"
+              on-click={() => this.append(data)}
+            >
+              Append
+            </el-button>
+            <el-button
+              size="mini"
+              type="text"
+              on-click={() => this.remove(node, data)}
+            >
+              Delete
+            </el-button>
+          </span>
+        </span>
+      );
+    }
+  }
 };
 </script>
 
@@ -74,5 +99,7 @@ export default {
     margin-top: 10px;
   }
 }
+.demo-input-suffix {
+  display: flex;
+}
 </style>
-

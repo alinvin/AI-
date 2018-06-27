@@ -1,10 +1,7 @@
 //添加号码
 <template>
    <div>
-     <el-form :model="form" label-width="80px">
-          <el-form-item label="电话:"> 
-            <el-input v-model="form.mobile"></el-input>
-          </el-form-item>
+     <el-form :model="form" label-width="80px" ref="form"> 
           <el-form-item label="省:"> 
               <el-select v-model="form.province" placeholder="请选择">
                 <el-option label="陕西省" value="221"></el-option>
@@ -24,7 +21,13 @@
               </el-select>
           </el-form-item>
            <el-form-item label="姓名:"> 
-             <el-input v-model="form.name" placeholder="请输入姓名"></el-input>
+             <el-input v-model="form.Name" placeholder="请输入姓名"></el-input>
+          </el-form-item>
+          <el-form-item label="称呼:"> 
+             <el-input v-model="form.CustomerAlias" placeholder="请输入姓名"></el-input>
+          </el-form-item>
+          <el-form-item label="电话:"> 
+             <el-input v-model="form.Phone" placeholder="请输入姓名"></el-input>
           </el-form-item>
            <el-form-item label="性别:"> 
              <el-select v-model="form.sex" placeholder="请选择">
@@ -49,7 +52,7 @@
             <el-input type="textarea" v-model="form.desc"></el-input>
           </el-form-item>
           <div style="text-align:right">
-            <el-button type="primary">确定</el-button>
+            <el-button type="primary" @click="submitForm('form')">确定</el-button>
           </div>
      </el-form>
    </div>
@@ -61,11 +64,12 @@ export default {
   data() {
     return {
       form: {
-        mobile: "",
         province: "",
         city: "",
         operators: "",
-        name: "",
+        Name: "",
+        CustomerAlias: "",
+        Phone: "",
         sex: "",
         date: "",
         company: "",
@@ -74,6 +78,22 @@ export default {
         desc: ""
       }
     };
+  },
+  created() {},
+  methods: {
+    submitForm(formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          this.$axios.post("botManager/customers/", this.form).then(d => {
+            this.$message.success("提交成功！");
+            this.$emit("closeDialog");
+          });
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    }
   }
 };
 </script>

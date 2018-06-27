@@ -32,8 +32,8 @@ export default {
     return {
       show2: false,
       authUser: {
-        username: "admin",
-        password: "123456"
+        username: "",
+        password: ""
       },
       rules: {
         username: [
@@ -50,26 +50,26 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          // this.$axios
-          //   .post("authUserLogin", {
-          //     username: this.authUser.username,
-          //     password: this.authUser.password
-          //   })
-          //   .then(d => {
-          //     this.$refs.ref_btn_login.$el.textContent = "登录中...";
-          //     if (d.status === 200) {
-          //       localStorage.setItem("ms_username", this.authUser.username);
-          //       setTimeout(() => {
-          //         this.$router.push("/");
-          //       }, 100);
-          //       localStorage.setItem("token", d.data.token);
-          //     }
-          //   })
-          //   .catch(erro => {
-          //     if (erro.response.status === 400) {
-          //       this.$message("用户名或密码错误！");
-          //     }
-          //   });
+          this.$axios
+            .post("authUserLogin", {
+              username: this.authUser.username,
+              password: this.authUser.password
+            })
+            .then(d => {
+              this.$refs.ref_btn_login.$el.textContent = "登录中...";
+              if (d.status === 200) {
+                localStorage.setItem("ms_username", this.authUser.username);
+                setTimeout(() => {
+                  this.$router.push("/");
+                }, 100);
+                localStorage.setItem("token", d.data.token);
+              }
+            })
+            .catch(erro => {
+              if (erro.response.status === 400) {
+                this.$message("用户名或密码错误！");
+              }
+            });
           localStorage.setItem("ms_username", this.authUser.username);
           this.$router.push("/");
         } else {

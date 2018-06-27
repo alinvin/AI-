@@ -39,7 +39,19 @@ export default {
         {
           icon: "icon-liucheng",
           index: "process-speech-surgery",
-          title: "流程话术"
+          title: "流程话术",
+          subs: [
+            {
+              icon: "icon-dianhuajilu",
+              index: "process-speech-surgery",
+              title: "对话集"
+            },
+            {
+              icon: "icon-dianhuajilu",
+              index: "corpus",
+              title: "语料库"
+            }
+          ]
         },
         {
           icon: "icon-dianhuajilu",
@@ -60,6 +72,28 @@ export default {
           icon: "icon-manage_staff",
           index: "employee-management",
           title: "员工管理"
+        },
+        {
+          icon: "icon-shezhizhongxin",
+          index: "set",
+          title: "设置中心",
+          subs: [
+            {
+              icon: "icon-manage_staff",
+              index: "robot-set",
+              title: "机器人配置"
+            },
+            {
+              icon: "icon-manage_staff",
+              index: "line-set",
+              title: "线路配置"
+            },
+            {
+              icon: "icon-manage_staff",
+              index: "third-party-set",
+              title: "第三方配置"
+            }
+          ]
         }
       ]
     };
@@ -97,5 +131,8 @@ export default {
 .sidebar > ul {
   height: 100%;
   overflow-y: auto;
+}
+.el-ad {
+  padding-left: 50px !important;
 }
 </style>

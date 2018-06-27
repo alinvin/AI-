@@ -26,7 +26,15 @@ export default new Router({
                     path: '/process-speech-surgery',
                     component: resolve => require(['../page/process-speech-surgery/process-speech-surgery.vue'], resolve),
                     meta: {
-                        title: '流程话术',
+                        title: '对话集',
+                        parent: ''
+                    }
+                },
+                {
+                    path: '/corpus',
+                    component: resolve => require(['../page/process-speech-surgery/corpus.vue'], resolve),
+                    meta: {
+                        title: '语料库',
                         parent: ''
                     }
                 },
@@ -57,11 +65,39 @@ export default new Router({
                         parent: ''
                     }
                 },
+                //员工管理
                 {
                     path: '/employee-management',
                     component: resolve => require(['../page/employee-management/employee-management.vue'], resolve),
                     meta: {
                         title: '员工管理',
+                        parent: ''
+                    }
+                },
+                //设置--机器人设置
+                {
+                    path: '/robot-set',
+                    component: resolve => require(['../page/set/robot-set.vue'], resolve),
+                    meta: {
+                        title: '机器人设置',
+                        parent: ''
+                    }
+                },
+                //设置--线路配置
+                {
+                    path: '/line-set',
+                    component: resolve => require(['../page/set/line-set.vue'], resolve),
+                    meta: {
+                        title: '线路配置',
+                        parent: ''
+                    }
+                },
+                //设置--第三方配置
+                {
+                    path: '/third-party-set',
+                    component: resolve => require(['../page/set/third-party-set.vue'], resolve),
+                    meta: {
+                        title: '第三方配置',
                         parent: ''
                     }
                 },
